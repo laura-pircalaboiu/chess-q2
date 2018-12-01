@@ -1,7 +1,7 @@
 class chessPiece
 {
-    
-    constructor(t, c) //assign type + colour
+    //assign type + colour
+    constructor(t, c) 
     {
         this.type = t;
         this.colour = c;

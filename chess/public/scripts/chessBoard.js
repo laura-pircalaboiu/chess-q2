@@ -1,27 +1,3 @@
-function chessBoard(id)
-{
-    this.id = id;
-    this.initBoard = function()
-    {
-        const cb = Array(8).fill(0).map(x => Array(8).fill(0));
-
-        for(let r = 0; r < cb.length; r++)
-        {
-            for(let c = 0; c < cb.length; c++)
-            {
-                //init pieces
-            }
-        }
-    }
-
-    this.displayBoard = function()
-    {
-        //display board
-    }
-}
-
-//idk which is better to use but apparently both should work...
-
 class chessBoard
 {
     constructor(id) //session id?
