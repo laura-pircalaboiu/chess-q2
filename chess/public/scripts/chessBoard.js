@@ -1,11 +1,11 @@
-class chessBoard
+export class chessBoard
 {
     constructor(id) //session id?
     {
         this.id = id;
     }
 
-    initBoard()
+    static initBoard()
     {
         const cb = Array(8).fill(0).map(x => Array(8).fill(0));
         const cbOrder = [cpType.Rook, cpType.Knight, cpType.Bishop, 
@@ -24,7 +24,7 @@ class chessBoard
         }
     }
 
-    displayBoard()
+    static displayBoard()
     {
         //display board
     }
