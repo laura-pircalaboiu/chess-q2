@@ -16,4 +16,4 @@ router.get('/', function(req, res, next) {
 app.set('port', 8000);
 let server = http.createServer(app);
 
-console.log("Hello World");
+//console.log("Hello World");
