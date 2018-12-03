@@ -1,10 +1,10 @@
-const express = require("express");
-const chessBoardJS = require("chessBoard.js");
-const chessLogicJS = require("chessLogic.js");
-const chessPieceJS = require("chessPiece.js");
-const structsJS = require("structs.js");
-
-let app = express = require('express');
+//const express = require("express");
+const chessBoardJS = require("./chessBoard.js");
+const chessLogicJS = require("./chessLogic.js");
+const chessPieceJS = require("./chessPiece.js");
+const structsJS = require("./structs.js");
+/*
+let app = require('express');
 const http = require('http');
 
 
@@ -15,5 +15,9 @@ router.get('/', function(req, res, next) {
 
 app.set('port', 8000);
 let server = http.createServer(app);
+*/
+const cbOrder = [structsJS.cpType.Rook, structsJS.cpType.Knight, structsJS.cpType.Bishop, 
+               structsJS.cpType.King, structsJS.cpType.Queen, structsJS.cpType.Bishop, 
+               structsJS.cpType.Knight, structsJS.cpType.Rook];
 
-//console.log("Hello World");
+console.log(cbOrder[0]);

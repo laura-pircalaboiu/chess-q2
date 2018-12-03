@@ -1,7 +1,16 @@
-export const cpType = Object.freeze({"Pawn":0, "Knight":1, "Bishop":2, "Rook":3, "Queen":4, "King": 5});
-export const cpColour = Object.freeze({"Black":0, "White":1})
+const cpType = Object.freeze({
+    Pawn:"Pawn", 
+    Knight:"Knight", 
+    Bishop:"Bishop", 
+    Rook:"Rook", 
+    Queen:"Queen", 
+    King: "King"
+});
+const cpColour = Object.freeze({"Black":0, "White":1});
+module.exports.cpColour = cpColour;
+module.exports.cpType = cpType;
 
-export class Position
+module.exports.Position = class Position
 {
     constructor(x, y)
     {
