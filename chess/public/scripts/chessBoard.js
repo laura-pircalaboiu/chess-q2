@@ -12,6 +12,7 @@ export class chessBoard
                          cpType.King, cpType.Queen, cpType.Bishop, 
                          cpType.Knight, cpType.Rook];
 
+        const cbSection = document.querySelector("#board");
         for(let r = 0; r < cb.length; r++)
         {
             for(let c = 0; c < cb.length; c++)
@@ -20,12 +21,16 @@ export class chessBoard
                 cb[1][col] = new chessPiece(cpType.Pawn, cpColour.Black);
                 cb[6, col] = new chessPiece(cpType.Pawn, cpColour.White);
                 cb[7][col] = new chessPiece(cbOrder[c], cpColour.White);
+                
+                let div = document.createElement('div');
+                if((r + c) % 2 === 0)
+                    div.classList.add("Black");
+                else
+                    div.classList.add("White");
+                
+                div.setAttribute("id", "" + (r + c));
+                cbSection.appendChild(div);
             }
         }
-    }
-
-    static displayBoard()
-    {
-        //display board
     }
 }
