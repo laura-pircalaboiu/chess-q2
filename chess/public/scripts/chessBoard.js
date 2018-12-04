@@ -14,6 +14,7 @@ module.exports = class chessBoard {
         for (let r = 0; r < cb.length; r++) {
             for (let c = 0; c < cb.length; c++) {
                 let div = document.createElement('div');
+                
                 if ((r + c) % 2 === 0)
                     div.classList.add('Black');
                 else
@@ -41,6 +42,9 @@ module.exports = class chessBoard {
                     cb[r][col] = new chessPiece(cbOrder[c], cpColour.White);
                     div.setAttribute('piece', `${cbOrder[c]}`);
                 }
+
+                else
+                    div.setAttribute('piece', 'None');
                 
                 cbSection.appendChild(div);
             }
