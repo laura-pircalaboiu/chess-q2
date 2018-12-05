@@ -26,6 +26,7 @@ module.exports = class chessBoard {
                     cb[r, col] = new chessPiece(cbOrder[c], cpColour.Black);
                     div.setAttribute('piece', `${cbOrder[c]}`);
                 }
+                
                 if (r = 1) {
                     cb[r][col] = new chessPiece(cpType.Pawn, cpColour.Black);
                     div.setAttribute('piece', `${cbOrder[c]}`);
