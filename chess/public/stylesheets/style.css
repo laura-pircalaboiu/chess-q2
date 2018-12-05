@@ -1,8 +1,68 @@
-body {
+body 
+{
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
+a 
+{
   color: #00B7FF;
+}
+
+.white
+{
+  background-color: bisque;
+  width: 8%;
+  height: 8%;
+}
+
+.black
+{
+  background-color: #70290B;
+  width: 8%;
+  height: 8%;
+}
+
+#board
+{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 10px solid #70290B;
+}
+
+a[piece = "Pawn"]
+{
+  /* do stuff */
+}
+
+a[piece = "Knight"]
+{
+  /* do stuff */
+}
+
+a[piece = "Bishop"]
+{
+  /* do stuff */
+}
+
+a[piece = "Rook"]
+{
+  /* do stuff */
+}
+
+a[piece = "Queen"]
+{
+  /* do stuff */
+}
+
+a[piece = "King"]
+{
+  /* do stuff */
+}
+
+a[piece = "None"]
+{
+  /* do stuff */
 }
