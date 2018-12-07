@@ -1,10 +1,5 @@
-module.exports = class chessBoard {
-    constructor(id) //session id?
-    {
-        this.id = id;
-    }
 
-    static initBoard() {
+function chessBoard() {
         const cb = Array(8).fill(0).map(x => Array(8).fill(0));
         const cbOrder = [cpType.Rook, cpType.Knight, cpType.Bishop,
         cpType.King, cpType.Queen, cpType.Bishop,
@@ -23,24 +18,24 @@ module.exports = class chessBoard {
                 div.setAttribute('id', '' + (r + c));
 
                 if (r == 0) {
-                    cb[r, col] = new chessPiece(cbOrder[c], cpColour.Black);
+                    cb[r, c] = new chessPiece(cbOrder[c], cpColour.Black);
                     div.setAttribute('piece', `${cbOrder[c]}`);
                 }
                 
                 if (r = 1) {
-                    cb[r][col] = new chessPiece(cpType.Pawn, cpColour.Black);
+                    cb[r][c] = new chessPiece(cpType.Pawn, cpColour.Black);
                     div.setAttribute('piece', `${cbOrder[c]}`);
                 }
 
                 if (r == 6)
                 {
-                    cb[r, col] = new chessPiece(cpType.Pawn, cpColour.White);
+                    cb[r, c] = new chessPiece(cpType.Pawn, cpColour.White);
                     div.setAttribute('piece', `${cpType.Pawn}`)
                 }
 
                 if(r == 7)
                 {
-                    cb[r][col] = new chessPiece(cbOrder[c], cpColour.White);
+                    cb[r][c] = new chessPiece(cbOrder[c], cpColour.White);
                     div.setAttribute('piece', `${cbOrder[c]}`);
                 }
 
@@ -51,4 +46,5 @@ module.exports = class chessBoard {
             }
         }
     }
-}
+    //var cpType = this.cpType;
+chessBoard();

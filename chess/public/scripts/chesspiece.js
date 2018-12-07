@@ -1,4 +1,4 @@
-module.exports = class chessPiece
+class chessPiece
 {
     //assign type + colour
     constructor(t, c) 

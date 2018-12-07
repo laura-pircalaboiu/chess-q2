@@ -32,37 +32,38 @@ a
   border: 10px solid #70290B;
 }
 
-a[piece = "Pawn"]
+a[data-piece = "Pawn"]
 {
   /* do stuff */
 }
 
-a[piece = "Knight"]
+a[data-piece = "Knight"]
 {
   /* do stuff */
 }
 
-a[piece = "Bishop"]
+a[data-piece = "Bishop"]
 {
   /* do stuff */
 }
 
-a[piece = "Rook"]
+a[data-piece = "Rook"]
 {
   /* do stuff */
 }
 
-a[piece = "Queen"]
+a[data-piece = "Queen"]
 {
   /* do stuff */
 }
 
-a[piece = "King"]
+a[data-piece = "King"]
 {
   /* do stuff */
 }
 
-a[piece = "None"]
+a[data-piece = "None"]
 {
   /* do stuff */
 }
+

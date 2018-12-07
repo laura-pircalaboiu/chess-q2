@@ -6,15 +6,18 @@ const cpType = Object.freeze({
     Queen:"Queen", 
     King: "King"
 });
-const cpColour = Object.freeze({"Black":0, "White":1});
-module.exports.cpColour = cpColour;
-module.exports.cpType = cpType;
+const cpColour = Object.freeze({Black:"Black", White:"White"});
+this.cpColour = cpColour;
+this.cpType = cpType;
 
-module.exports.Position = class Position
-{
-    constructor(x, y)
-    {
-        this.x = x;
-        this.y = y;
-    }
-}
+// this.Position = class Position
+// {
+//     constructor(x, y)
+//     {
+//         this.x = x;
+//         this.y = y;
+//     }
+// }
+
+const movesWhite = [];
+const movesBlack = [];
