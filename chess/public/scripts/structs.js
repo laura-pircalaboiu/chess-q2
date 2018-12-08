@@ -10,6 +10,16 @@ const cpColour = Object.freeze({Black:"Black", White:"White"});
 this.cpColour = cpColour;
 this.cpType = cpType;
 
+class chessPiece
+{
+    //assign type + colour
+    constructor(t, c) 
+    {
+        this.type = t;
+        this.colour = c;
+    }
+}
+
 // this.Position = class Position
 // {
 //     constructor(x, y)
