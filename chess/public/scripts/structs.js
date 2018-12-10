@@ -13,10 +13,11 @@ this.cpType = cpType;
 class chessPiece
 {
     //assign type + colour
-    constructor(t, c) 
+    constructor(t, c, div) 
     {
         this.type = t;
         this.colour = c;
+        this.div = div;
     }
 }
 

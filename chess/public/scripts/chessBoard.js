@@ -24,29 +24,52 @@ function chessBoard() {
 
 
             if (r === 0) {
-                cb[r, c] = new chessPiece(cbOrder[c], cpColour.Black);
+                cb[r, c] = new chessPiece(cbOrder[c], cpColour.Black, div);
                 div.setAttribute('piece', `${cbOrder[c]}`);
+                div.innerHTML = "bpi"
+                div.setAttribute("draggable",true);
             }
 
             if (r === 1) {
-                cb[r][c] = new chessPiece(cpType.Pawn, cpColour.Black);
-                div.setAttribute('piece', `${cbOrder[c]}`);
+                cb[r][c] = new chessPiece(cpType.Pawn, cpColour.Black, div);
+                div.setAttribute('piece', `${cpType.Pawn}`);
+                div.innerHTML = "bp"
+                div.setAttribute("draggable",true);
             }
 
             if (r === 6) {
-                cb[r, c] = new chessPiece(cpType.Pawn, cpColour.White);
+                cb[r, c] = new chessPiece(cpType.Pawn, cpColour.White, div);
                 div.setAttribute('piece', `${cpType.Pawn}`)
+                div.innerHTML = "wp"
+                div.setAttribute("draggable",true);
             }
 
             if (r === 7) {
-                cb[r][c] = new chessPiece(cbOrder[c], cpColour.White);
+                cb[r][c] = new chessPiece(cbOrder[c], cpColour.White, div);
                 div.setAttribute('piece', `${cbOrder[c]}`);
+                div.innerHTML = "wpi"
+                div.setAttribute("draggable",true);
             }
 
             else
                 div.setAttribute('piece', 'None');
 
+            div.addEventListener("dragstart", function(){
+                this.style.opacity="100%"
+            })
 
+           /* div.addEventListener("dragend",function(e){
+                console.log(e.screenX+" "+e.screenY)
+                let refTop = cbSection.getBoundingClientRect().top
+                let refLeft = cbSection.getBoundingClientRect().left
+                for(let row=0;row<cb.length;row++){
+                    for(let col=0;col<cb.length;col++){
+                        cb[r][c].div.getBoundingClientRect().top
+                        cb[r][c].div.getBoundingClientRect().left
+                        if()
+                    }
+                }
+            })*/
             div.style.top = `calc(12.5% * ${r})` 
             div.style.left = `calc(12.5% * ${c})` 
             cbSection.appendChild(div);
