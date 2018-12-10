@@ -44,6 +44,13 @@ a
   border: 2px solid red;
   z-index:1;
   border-radius: 2px;
+  cursor: move;
+  cursor: -moz-move;
+  cursor: -webkit-move;
+}
+
+[draggable=true]{
+  cursor: move;
 }
 
 #board
@@ -56,39 +63,3 @@ a
   height: 50vh;
   border: 10px solid #70290B;
 }
-
-a[data-piece = "Pawn"]
-{
-  /* do stuff */
-}
-
-a[data-piece = "Knight"]
-{
-  /* do stuff */
-}
-
-a[data-piece = "Bishop"]
-{
-  /* do stuff */
-}
-
-a[data-piece = "Rook"]
-{
-  /* do stuff */
-}
-
-a[data-piece = "Queen"]
-{
-  /* do stuff */
-}
-
-a[data-piece = "King"]
-{
-  /* do stuff */
-}
-
-a[data-piece = "None"]
-{
-  /* do stuff */
-}
-
