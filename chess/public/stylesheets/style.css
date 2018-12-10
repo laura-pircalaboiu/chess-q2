@@ -9,18 +9,41 @@ a
   color: #00B7FF;
 }
 
-.white
+.White
 {
   background-color: bisque;
-  width: 8%;
-  height: 8%;
+  width: 12.5%;
+  height: 12.5%;
+  position: absolute;;
+  float:left;
+  margin: 0%;
+  padding: 0%;
+
 }
 
-.black
+.White:hover{
+  border: 2px solid red;
+  z-index:1;
+  border-radius: 2px;
+}
+
+.Black
 {
   background-color: #70290B;
-  width: 8%;
-  height: 8%;
+  width: 12.5%;
+  height: 12.5%;
+  position: absolute;;
+  float:left;
+  padding: 0%;
+  margin: 0%;
+  z-index:0;
+  border: 0px solid red;
+}
+
+.Black:hover{
+  border: 2px solid red;
+  z-index:1;
+  border-radius: 2px;
 }
 
 #board
@@ -29,6 +52,8 @@ a
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 50vh;
+  height: 50vh;
   border: 10px solid #70290B;
 }
 
