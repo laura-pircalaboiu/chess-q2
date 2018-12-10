@@ -14,12 +14,12 @@ function chessBoard() {
         for (let c = 0; c < cb.length; c++) {
             let div = document.createElement('div');
             console.log('test')
-           
+
             if ((r + c) % 2 === 0)
                 div.classList.add('Black');
             else
                 div.classList.add('White');
-            
+
             counter++;
             div.setAttribute('id', (counter) + '');
             div.setAttribute('draggable', "true");
@@ -30,7 +30,7 @@ function chessBoard() {
                 div.innerHTML = "bpi"
 
                 div.setAttribute("draggable", true);
-             
+
 
                 switch (c) {
                     case 0: {
@@ -77,7 +77,7 @@ function chessBoard() {
             }
 
             if (r === 1) {
-        
+
                 div.chessPiece = new chessPiece(cpType.Pawn, cpColour.Black, div);
                 div.setAttribute('piece', `${cpType.Pawn}`);
                 div.innerHTML = "bp"
@@ -153,38 +153,38 @@ function chessBoard() {
             })
 
 
-            div.addEventListener("dragover", function(e){
+            div.addEventListener("dragover", function (e) {
                 this.style.cursor = 'move';
                 e.preventDefault();
             })
 
-   
-           
-            div.style.top = `calc(12.5% * ${r})` 
-            div.style.left = `calc(12.5% * ${c})` 
 
-            div.addEventListener("dragend",function(e){
-                console.log(e.screenX+" "+e.screenY)
-                let minDistance=10e100
+
+            div.style.top = `calc(12.5% * ${r})`
+            div.style.left = `calc(12.5% * ${c})`
+
+            div.addEventListener("dragend", function (e) {
+                console.log(e.screenX + " " + e.screenY)
+                let minDistance = 10e100
                 let newX
                 let newY
-                for(let row=0;row<cb.length;row++){
-                    for(let col=0;col<cb.length;col++){
+                for (let row = 0; row < cb.length; row++) {
+                    for (let col = 0; col < cb.length; col++) {
                         let currentTop = cb[row][col].getBoundingClientRect().top
                         let currentLeft = cb[row][col].getBoundingClientRect().left
-                        if(Math.sqrt(Math.abs(e.screenX-currentLeft)+Math.abs(e.screenY-currentTop))<minDistance){
-                            minDistance=Math.sqrt(Math.abs(e.screenX-currentLeft)+Math.abs(e.screenY-currentTop));
+                        if (Math.sqrt(Math.abs(e.screenX - currentLeft) + Math.abs(e.screenY - currentTop)) < minDistance) {
+                            minDistance = Math.sqrt(Math.abs(e.screenX - currentLeft) + Math.abs(e.screenY - currentTop));
                             //change div to div im holding
-                            newX=row;
-                            newY=col;
+                            newX = row;
+                            newY = col;
                             console.log("yeet")
                         }
                     }
                 }
-                console.log(newX,newY)
+                console.log(newX, newY)
             })
 
-            cb[r][c]=div;
+            cb[r][c] = div;
 
 
             cbSection.appendChild(div);
