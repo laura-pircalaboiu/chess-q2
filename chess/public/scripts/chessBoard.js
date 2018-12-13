@@ -4,6 +4,8 @@ function chessBoard() {
     const cbOrder = [cpType.Rook, cpType.Knight, cpType.Bishop,
     cpType.King, cpType.Queen, cpType.Bishop,
     cpType.Knight, cpType.Rook];
+    let clicked = false;
+    let tempPiece= 'None';
 
     const cbSection = document.querySelector("#board");
     console.log(cbSection)
@@ -27,7 +29,7 @@ function chessBoard() {
             if (r === 0) {
                 div.chessPiece = new chessPiece(cbOrder[c], cpColour.Black, div);
                 div.setAttribute('piece', `${cbOrder[c]}`);
-                div.innerHTML = "bpi"
+                //div.innerHTML = "bpi"
 
                 div.setAttribute("draggable", true);
 
@@ -76,29 +78,28 @@ function chessBoard() {
 
             }
 
-            if (r === 1) {
+
+            else if (r === 1) {
+
 
                 div.chessPiece = new chessPiece(cpType.Pawn, cpColour.Black, div);
                 div.setAttribute('piece', `${cpType.Pawn}`);
-                div.innerHTML = "bp"
-
+                //div.innerHTML = "bp"
                 div.style.backgroundImage = 'url(../images/blackPawn.png)'
 
             }
 
-            if (r === 6) {
+            else if (r === 6) {
                 div.chessPiece = new chessPiece(cpType.Pawn, cpColour.White, div);
                 div.setAttribute('piece', `${cpType.Pawn}`)
-                div.innerHTML = "wp"
-
                 div.style.backgroundImage = 'url(../images/whitePawn.png)'
 
             }
 
-            if (r === 7) {
+            else if (r === 7) {
                 div.chessPiece = new chessPiece(cbOrder[c], cpColour.White, div);
                 div.setAttribute('piece', `${cbOrder[c]}`);
-                div.innerHTML = "wpi"
+                //div.innerHTML = "wpi"
 
                 div.setAttribute("draggable", true);
 
@@ -145,8 +146,9 @@ function chessBoard() {
                 }
             }
 
-            else
+            else{
                 div.setAttribute('piece', 'None');
+            }
 
             div.addEventListener("dragstart", function () {
                 this.style.opacity = "100%"
@@ -158,34 +160,50 @@ function chessBoard() {
                 e.preventDefault();
             })
 
-
-
             div.style.top = `calc(12.5% * ${r})`
             div.style.left = `calc(12.5% * ${c})`
 
             div.addEventListener("dragend", function (e) {
                 console.log(e.screenX + " " + e.screenY)
                 let minDistance = 10e100
-                let newX
-                let newY
+                let newX = 0;
+                let newY = 0;
                 for (let row = 0; row < cb.length; row++) {
                     for (let col = 0; col < cb.length; col++) {
-                        let currentTop = cb[row][col].getBoundingClientRect().top
+                        let currentBottom = cb[row][col].getBoundingClientRect().bottom
                         let currentLeft = cb[row][col].getBoundingClientRect().left
-                        if (Math.sqrt(Math.abs(e.screenX - currentLeft) + Math.abs(e.screenY - currentTop)) < minDistance) {
-                            minDistance = Math.sqrt(Math.abs(e.screenX - currentLeft) + Math.abs(e.screenY - currentTop));
+                        if (Math.sqrt(Math.abs(e.screenX - currentLeft) + Math.abs(e.screenY - currentBottom)) < minDistance) {
+                            minDistance = Math.sqrt(Math.abs(e.screenX - currentLeft) + Math.abs(e.screenY - currentBottom));
                             //change div to div im holding
                             newX = row;
                             newY = col;
-                            console.log("yeet")
+                            console.log("yeet");
                         }
                     }
                 }
-                console.log(newX, newY)
+                console.log(newX, newY);
             })
-
+            
+            
+            div.addEventListener("click", function(e){
+                if(clicked){
+                    clicked=false
+                    console.log(e.target)
+                    div.setAttribute('piece',tempPiece)
+                }else{
+                    clicked=true;
+                    console.log(e.target)
+                   tempPiece= document.getElementById(e.target.id).getAttribute("piece")
+                   console.log(tempPiece)
+                }
+                /*
+                    let pieceType= cb[from.r][from.c]
+                    cb[to.r][to.c]=piecetype
+                    cb[from.r][from.c]=null
+                */
+                
+            })
             cb[r][c] = div;
-
 
             cbSection.appendChild(div);
         }
