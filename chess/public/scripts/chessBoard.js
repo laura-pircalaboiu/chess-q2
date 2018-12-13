@@ -78,7 +78,9 @@ function chessBoard() {
 
             }
 
+
             else if (r === 1) {
+
 
                 div.chessPiece = new chessPiece(cpType.Pawn, cpColour.Black, div);
                 div.setAttribute('piece', `${cpType.Pawn}`);
@@ -151,6 +153,7 @@ function chessBoard() {
             div.addEventListener("dragstart", function () {
                 this.style.opacity = "100%"
             })
+
 
             div.addEventListener("dragover", function (e) {
                 this.style.cursor = 'move';
