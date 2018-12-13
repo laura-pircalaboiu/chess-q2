@@ -112,6 +112,7 @@ function chessBoard()
                     clicked=true;
                     console.log(e.target)
                    tempPiece= document.getElementById(e.target.id).getAttribute("data-piece")
+                   e.target.setAttribute("data-piece","None")
                    console.log(tempPiece)
                 }
                 /*
