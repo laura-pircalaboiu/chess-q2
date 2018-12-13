@@ -1,0 +1,117 @@
+body 
+{
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a 
+{
+  color: #00B7FF;
+}
+
+.White
+{
+  background-color: bisque;
+  width: 12.5%;
+  height: 12.5%;
+  position: absolute;;
+  float:left;
+  margin: 0%;
+  padding: 0%;
+
+}
+
+.White:hover{
+  border: 2px solid red;
+  z-index:1;
+  border-radius: 2px;
+}
+
+.Black
+{
+  background-color: #70290B;
+  width: 12.5%;
+  height: 12.5%;
+  position: absolute;;
+  float:left;
+  padding: 0%;
+  margin: 0%;
+  z-index:0;
+  border: 0px solid red;
+}
+
+.Black:hover{
+  border: 2px solid red;
+  z-index:1;
+  border-radius: 2px;
+  cursor: move;
+  cursor: -moz-move;
+  cursor: -webkit-move;
+}
+
+[draggable=true]{
+  cursor: move;
+}
+
+#board
+{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vh;
+  height: 50vh;
+  border: 10px solid #70290B;
+}
+
+[data-piece="White Pawn"]
+{
+  background-image: url(../../images/whitePawn.png);
+}
+[data-piece="White Rook"]
+{
+  background-image: url(../../images/whiteRook.png);
+}
+[data-piece="White Knight"]
+{
+  background-image: url(../../images/whiteKnight.png);
+}
+[data-piece="White Bishop"]
+{
+  background-image: url(../../images/whiteBishop.png);
+}
+[data-piece="White King"]
+{
+  background-image: url(../../images/whiteKing.png);
+}
+[data-piece="White Queen"]
+{
+  background-image: url(../../images/whiteQueen.png);
+}
+
+[data-piece="Black Pawn"]
+{
+  background-image: url(../../images/blackPawn.png);
+}
+[data-piece="Black Rook"]
+{
+  background-image: url(../../images/blackRook.png);
+}
+[data-piece="Black Knight"]
+{
+  background-image: url(../../images/blackKnight.png);
+}
+[data-piece="Black Bishop"]
+{
+  background-image: url(../../images/blackBishop.png);
+}
+[data-piece="Black King"]
+{
+  background-image: url(../../images/blackKing.png);
+}
+[data-piece="Black Queen"]
+{
+  background-image: url(../../images/blackQueen.png);
+}
+
+
