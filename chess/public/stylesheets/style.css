@@ -64,52 +64,52 @@ a
   border: 10px solid #70290B;
 }
 
-.White[data-piece='Pawn']
+.White[data-piece="Pawn"]
 {
   background-image: url(../../../ChessPics/whitePawn.png);
 }
-.White[data-piece='Rook']
+.White[data-piece="Rook"]
 {
   background-image: url(../../../ChessPics/whiteRook.png);
 }
-.White[data-piece='Knight']
+.White[data-piece="Knight"]
 {
   background-image: url(../../../ChessPics/whiteKnight.png);
 }
-.White[data-piece='Bishop']
+.White[data-piece="Bishop"]
 {
   background-image: url(../../../ChessPics/whiteBishop.png);
 }
-.White[data-piece='King']
+.White[data-piece="King"]
 {
   background-image: url(../../../ChessPics/whiteKing.png);
 }
-.White[data-piece='Queen']
+.White[data-piece="Queen"]
 {
   background-image: url(../../../ChessPics/whiteQueen.png);
 }
 
-.Black[data-piece='Pawn']
+.Black[data-piece="Pawn"]
 {
   background-image: url(../../../ChessPics/blackPawn.png);
 }
-.Black[data-piece='Rook']
+.Black[data-piece="Rook"]
 {
   background-image: url(../../../ChessPics/blackRook.png);
 }
-.Black[data-piece='Knight']
+.Black[data-piece="Knight"]
 {
   background-image: url(../../../ChessPics/blackKnight.png);
 }
-.Black[data-piece='Bishop']
+.Black[data-piece="Bishop"]
 {
   background-image: url(../../../ChessPics/blackBishop.png);
 }
-.Black[data-piece='King']
+.Black[data-piece="King"]
 {
   background-image: url(../../../ChessPics/blackKing.png);
 }
-.Black[data-piece='Queen']
+.Black[data-piece="Queen"]
 {
   background-image: url(../../../ChessPics/blackQueen.png);
 }
