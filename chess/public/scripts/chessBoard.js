@@ -1,5 +1,6 @@
 
-function chessBoard() {
+function chessBoard() 
+{
     let cb = Array(8).fill(0).map(x => Array(8).fill(0));
     const cbOrder = [cpType.Rook, cpType.Knight, cpType.Bishop,
     cpType.King, cpType.Queen, cpType.Bishop,
@@ -8,14 +9,16 @@ function chessBoard() {
     let tempPiece= 'None';
 
     const cbSection = document.querySelector("#board");
-    console.log(cbSection)
+    console.log(cbSection);
 
     let counter = 0;
 
-    for (let r = 0; r < cb.length; r++) {
-        for (let c = 0; c < cb.length; c++) {
+    for (let r = 0; r < cb.length; r++) 
+    {
+        for (let c = 0; c < cb.length; c++) 
+        {
             let div = document.createElement('div');
-            console.log('test')
+            console.log('test');
 
             if ((r + c) % 2 === 0)
                 div.classList.add('Black');
@@ -26,14 +29,13 @@ function chessBoard() {
             div.setAttribute('id', (counter) + '');
             div.setAttribute('draggable', "true");
 
-            if (r === 0) {
+            if (r === 0) 
+            {
                 div.chessPiece = new chessPiece(cbOrder[c], cpColour.Black, div);
-                div.setAttribute('piece', `${cbOrder[c]}`);
-                //div.innerHTML = "bpi"
-
+                div.setAttribute('data-piece', `${cbOrder[c]}`);
                 div.setAttribute("draggable", true);
 
-
+            /*
                 switch (c) {
                     case 0: {
                         div.style.backgroundImage = 'url(../images/blackRook.png)';
@@ -75,34 +77,29 @@ function chessBoard() {
                         break;
                     }
                 }
-
+                */
             }
 
-
-            else if (r === 1) {
-
-
+            else if (r === 1) 
+            {
                 div.chessPiece = new chessPiece(cpType.Pawn, cpColour.Black, div);
-                div.setAttribute('piece', `${cpType.Pawn}`);
-                //div.innerHTML = "bp"
-                div.style.backgroundImage = 'url(../images/blackPawn.png)'
-
+                div.setAttribute('data-piece', `${cpType.Pawn}`);
+                //div.style.backgroundImage = 'url(../images/blackPawn.png)';
             }
 
-            else if (r === 6) {
+            else if (r === 6) 
+            {
                 div.chessPiece = new chessPiece(cpType.Pawn, cpColour.White, div);
-                div.setAttribute('piece', `${cpType.Pawn}`)
-                div.style.backgroundImage = 'url(../images/whitePawn.png)'
-
+                div.setAttribute('data-piece', `${cpType.Pawn}`);
+                //div.style.backgroundImage = 'url(../images/whitePawn.png)'
             }
 
-            else if (r === 7) {
+            else if (r === 7) 
+            {
                 div.chessPiece = new chessPiece(cbOrder[c], cpColour.White, div);
-                div.setAttribute('piece', `${cbOrder[c]}`);
-                //div.innerHTML = "wpi"
-
+                div.setAttribute('data-piece', `${cbOrder[c]}`);
                 div.setAttribute("draggable", true);
-
+            /*
                 switch (c) {
                     case 0: {
                         div.style.backgroundImage = 'url(../images/whiteRook.png)';
@@ -143,41 +140,47 @@ function chessBoard() {
                         div.style.backgroundImage = 'url(../images/whiteRook.png)';
                         break;
                     }
-                }
+                } */
             }
 
-            else{
-                div.setAttribute('piece', 'None');
-            }
+            else
+                div.setAttribute('data-piece', 'None');
 
-            div.addEventListener("dragstart", function () {
+            div.addEventListener("dragstart", function () 
+            {
                 this.style.opacity = "100%"
             })
 
 
-            div.addEventListener("dragover", function (e) {
+            div.addEventListener("dragover", function (e) 
+            {
                 this.style.cursor = 'move';
                 e.preventDefault();
             })
 
-            div.style.top = `calc(12.5% * ${r})`
-            div.style.left = `calc(12.5% * ${c})`
+            div.style.top = `calc(12.5% * ${r})`;
+            div.style.left = `calc(12.5% * ${c})`;
 
-            div.addEventListener("dragend", function (e) {
+            div.addEventListener("dragend", function (e) 
+            {
                 console.log(e.screenX + " " + e.screenY)
                 let minDistance = 10e100
                 let newX = 0;
                 let newY = 0;
-                for (let row = 0; row < cb.length; row++) {
-                    for (let col = 0; col < cb.length; col++) {
+                for (let row = 0; row < cb.length; row++) 
+                {
+                    for (let col = 0; col < cb.length; col++) 
+                    {
                         let currentBottom = cb[row][col].getBoundingClientRect().bottom
                         let currentLeft = cb[row][col].getBoundingClientRect().left
-                        if (Math.sqrt(Math.abs(e.screenX - currentLeft) + Math.abs(e.screenY - currentBottom)) < minDistance) {
+                        if (Math.sqrt(Math.abs(e.screenX - currentLeft) 
+                        + Math.abs(e.screenY - currentBottom)) < minDistance) 
+                        {
                             minDistance = Math.sqrt(Math.abs(e.screenX - currentLeft) + Math.abs(e.screenY - currentBottom));
                             //change div to div im holding
                             newX = row;
                             newY = col;
-                            console.log("yeet");
+                            //console.log("yeet");
                         }
                     }
                 }
@@ -185,15 +188,20 @@ function chessBoard() {
             })
             
             
-            div.addEventListener("click", function(e){
-                if(clicked){
+            div.addEventListener("click", function(e)
+            {
+                if(clicked)
+                {
                     clicked=false
                     console.log(e.target)
-                    div.setAttribute('piece',tempPiece)
-                }else{
+                    div.setAttribute('data-piece',tempPiece)
+                }
+                
+                else
+                {
                     clicked=true;
                     console.log(e.target)
-                   tempPiece= document.getElementById(e.target.id).getAttribute("piece")
+                   tempPiece= document.getElementById(e.target.id).getAttribute("data-piece")
                    console.log(tempPiece)
                 }
                 /*

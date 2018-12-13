@@ -63,3 +63,55 @@ a
   height: 50vh;
   border: 10px solid #70290B;
 }
+
+.White[data-piece='pawn']
+{
+  background-image: url(../../../ChessPics/whitePawn.png);
+}
+.White[data-piece='rook']
+{
+  background-image: url(../../../ChessPics/whiteRook.png);
+}
+.White[data-piece='knight']
+{
+  background-image: url(../../../ChessPics/whiteKnight.png);
+}
+.White[data-piece='bishop']
+{
+  background-image: url(../../../ChessPics/whiteBishop.png);
+}
+.White[data-piece='king']
+{
+  background-image: url(../../../ChessPics/whiteKing.png);
+}
+.White[data-piece='queen']
+{
+  background-image: url(../../../ChessPics/whiteQueen.png);
+}
+
+.Black[data-piece='pawn']
+{
+  background-image: url(../../../ChessPics/blackPawn.png);
+}
+.Black[data-piece='rook']
+{
+  background-image: url(../../../ChessPics/blackRook.png);
+}
+.Black[data-piece='knight']
+{
+  background-image: url(../../../ChessPics/blackKnight.png);
+}
+.Black[data-piece='bishop']
+{
+  background-image: url(../../../ChessPics/blackBishop.png);
+}
+.Black[data-piece='king']
+{
+  background-image: url(../../../ChessPics/blackKing.png);
+}
+.Black[data-piece='queen']
+{
+  background-image: url(../../../ChessPics/blackQueen.png);
+}
+
+
