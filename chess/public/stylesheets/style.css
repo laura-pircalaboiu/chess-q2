@@ -64,54 +64,54 @@ a
   border: 10px solid #70290B;
 }
 
-.White[data-piece="Pawn"]
+[data-piece="White Pawn"]
 {
-  background-image: url(../../../ChessPics/whitePawn.png);
+  background-image: url(../../images/whitePawn.png);
 }
-.White[data-piece="Rook"]
+[data-piece="White Rook"]
 {
-  background-image: url(../../../ChessPics/whiteRook.png);
+  background-image: url(../../images/whiteRook.png);
 }
-.White[data-piece="Knight"]
+[data-piece="White Knight"]
 {
-  background-image: url(../../../ChessPics/whiteKnight.png);
+  background-image: url(../../images/whiteKnight.png);
 }
-.White[data-piece="Bishop"]
+[data-piece="White Bishop"]
 {
-  background-image: url(../../../ChessPics/whiteBishop.png);
+  background-image: url(../../images/whiteBishop.png);
 }
-.White[data-piece="King"]
+[data-piece="White King"]
 {
-  background-image: url(../../../ChessPics/whiteKing.png);
+  background-image: url(../../images/whiteKing.png);
 }
-.White[data-piece="Queen"]
+[data-piece="White Queen"]
 {
-  background-image: url(../../../ChessPics/whiteQueen.png);
+  background-image: url(../../images/whiteQueen.png);
 }
 
-.Black[data-piece="Pawn"]
+[data-piece="Black Pawn"]
 {
-  background-image: url(../../../ChessPics/blackPawn.png);
+  background-image: url(../../images/blackPawn.png);
 }
-.Black[data-piece="Rook"]
+[data-piece="Black Rook"]
 {
-  background-image: url(../../../ChessPics/blackRook.png);
+  background-image: url(../../images/blackRook.png);
 }
-.Black[data-piece="Knight"]
+[data-piece="Black Knight"]
 {
-  background-image: url(../../../ChessPics/blackKnight.png);
+  background-image: url(../../images/blackKnight.png);
 }
-.Black[data-piece="Bishop"]
+[data-piece="Black Bishop"]
 {
-  background-image: url(../../../ChessPics/blackBishop.png);
+  background-image: url(../../images/blackBishop.png);
 }
-.Black[data-piece="King"]
+[data-piece="Black King"]
 {
-  background-image: url(../../../ChessPics/blackKing.png);
+  background-image: url(../../images/blackKing.png);
 }
-.Black[data-piece="Queen"]
+[data-piece="Black Queen"]
 {
-  background-image: url(../../../ChessPics/blackQueen.png);
+  background-image: url(../../images/blackQueen.png);
 }
 
 

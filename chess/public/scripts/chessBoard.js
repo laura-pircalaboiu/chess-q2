@@ -32,115 +32,8 @@ function chessBoard()
             if (r === 0) 
             {
                 div.chessPiece = new chessPiece(cbOrder[c], cpColour.Black, div);
-                div.setAttribute('data-piece', `${cbOrder[c]}`);
+                div.setAttribute('data-piece', `Black ${cbOrder[c]}`);
                 div.setAttribute("draggable", true);
-
-            /*
-                switch (c) {
-                    case 0: {
-                        div.style.backgroundImage = 'url(../images/blackRook.png)';
-                        break;
-                    }
-
-                    case 1: {
-                        div.style.backgroundImage = 'url(../images/blackKnight.png)';
-                        break;
-                    }
-
-                    case 2: {
-                        div.style.backgroundImage = 'url(../images/blackBishop.png)';
-                        break;
-                    }
-
-                    case 3: {
-                        div.style.backgroundImage = 'url(../images/blackKing.png)';
-                        break;
-                    }
-
-                    case 4: {
-                        div.style.backgroundImage = 'url(../images/blackQueen.png)';
-                        break;
-                    }
-
-                    case 5: {
-                        div.style.backgroundImage = 'url(../images/blackBishop.png)';
-                        break;
-                    }
-
-                    case 6: {
-                        div.style.backgroundImage = 'url(../images/blackKnight.png)';
-                        break;
-                    }
-
-                    case 7: {
-                        div.style.backgroundImage = 'url(../images/blackRook.png)';
-                        break;
-                    }
-                }
-                */
-            }
-
-            else if (r === 1) 
-            {
-                div.chessPiece = new chessPiece(cpType.Pawn, cpColour.Black, div);
-                div.setAttribute('data-piece', `${cpType.Pawn}`);
-                //div.style.backgroundImage = 'url(../images/blackPawn.png)';
-            }
-
-            else if (r === 6) 
-            {
-                div.chessPiece = new chessPiece(cpType.Pawn, cpColour.White, div);
-                div.setAttribute('data-piece', `${cpType.Pawn}`);
-                //div.style.backgroundImage = 'url(../images/whitePawn.png)'
-            }
-
-            else if (r === 7) 
-            {
-                div.chessPiece = new chessPiece(cbOrder[c], cpColour.White, div);
-                div.setAttribute('data-piece', `${cbOrder[c]}`);
-                div.setAttribute("draggable", true);
-            /*
-                switch (c) {
-                    case 0: {
-                        div.style.backgroundImage = 'url(../images/whiteRook.png)';
-                        break;
-                    }
-
-                    case 1: {
-                        div.style.backgroundImage = 'url(../images/whiteKnight.png)';
-                        break;
-                    }
-
-                    case 2: {
-                        div.style.backgroundImage = 'url(../images/whiteBishop.png)';
-                        break;
-                    }
-
-                    case 3: {
-                        div.style.backgroundImage = 'url(../images/whiteKing.png)';
-                        break;
-                    }
-
-                    case 4: {
-                        div.style.backgroundImage = 'url(../images/whiteQueen.png)';
-                        break;
-                    }
-
-                    case 5: {
-                        div.style.backgroundImage = 'url(../images/whiteBishop.png)';
-                        break;
-                    }
-
-                    case 6: {
-                        div.style.backgroundImage = 'url(../images/whiteKnight.png)';
-                        break;
-                    }
-
-                    case 7: {
-                        div.style.backgroundImage = 'url(../images/whiteRook.png)';
-                        break;
-                    }
-                } */
             }
 
             else
@@ -204,15 +97,9 @@ function chessBoard()
                    tempPiece= document.getElementById(e.target.id).getAttribute("data-piece")
                    console.log(tempPiece)
                 }
-                /*
-                    let pieceType= cb[from.r][from.c]
-                    cb[to.r][to.c]=piecetype
-                    cb[from.r][from.c]=null
-                */
-                
             })
-            cb[r][c] = div;
 
+            cb[r][c] = div;
             cbSection.appendChild(div);
         }
     }
