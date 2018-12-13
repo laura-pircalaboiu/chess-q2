@@ -33,7 +33,24 @@ function chessBoard()
             {
                 div.chessPiece = new chessPiece(cbOrder[c], cpColour.Black, div);
                 div.setAttribute('data-piece', `Black ${cbOrder[c]}`);
-                div.setAttribute("draggable", true);
+            }
+
+            else if (r === 1) 
+            {
+                div.chessPiece = new chessPiece(cpType.Pawn, cpColour.Black, div);
+                div.setAttribute('data-piece', `Black ${cpType.Pawn}`);
+            }
+
+            else if (r === 6) 
+            {
+                div.chessPiece = new chessPiece(cpType.Pawn, cpColour.White, div);
+                div.setAttribute('data-piece', `White ${cpType.Pawn}`);
+            }
+
+            else if (r === 7) 
+            {
+                div.chessPiece = new chessPiece(cbOrder[c], cpColour.White, div);
+                div.setAttribute('data-piece', `White ${cbOrder[c]}`);
             }
 
             else
@@ -97,9 +114,15 @@ function chessBoard()
                    tempPiece= document.getElementById(e.target.id).getAttribute("data-piece")
                    console.log(tempPiece)
                 }
+                /*
+                    let pieceType= cb[from.r][from.c]
+                    cb[to.r][to.c]=piecetype
+                    cb[from.r][from.c]=null
+                */
+                
             })
-
             cb[r][c] = div;
+
             cbSection.appendChild(div);
         }
     }
