@@ -1,7 +1,7 @@
 var express = require("express");
 var http = require("http");
 var websocket = require("ws");
-var messages = require("./public/javascripts/messages");
+var messages = require("./public/scripts/messages");
 
 var Game = require("./game");
 var port = process.argv[2];

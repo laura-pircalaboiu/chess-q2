@@ -1,4 +1,3 @@
-
 function chessBoard() 
 {
     let cb = Array(8).fill(0).map(x => Array(8).fill(0));
