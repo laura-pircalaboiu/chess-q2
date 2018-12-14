@@ -9,7 +9,7 @@ function chessBoard()
     let tempPiece= 'None';
 
     const cbSection = document.querySelector("#board");
-    console.log(cbSection);
+    // console.log(cbSection);
 
     let counter = 0;
 
@@ -18,7 +18,7 @@ function chessBoard()
         for (let c = 0; c < cb.length; c++) 
         {
             let div = document.createElement('div');
-            console.log('test');
+            // console.log('test');
 
             if ((r + c) % 2 === 0)
                 div.classList.add('Black');
@@ -73,7 +73,7 @@ function chessBoard()
 
             div.addEventListener("dragend", function (e) 
             {
-                console.log(e.screenX + " " + e.screenY)
+                // console.log(e.screenX + " " + e.screenY)
                 let minDistance = 10e100
                 let newX = 0;
                 let newY = 0;
@@ -94,7 +94,7 @@ function chessBoard()
                         }
                     }
                 }
-                console.log(newX, newY);
+                // console.log(newX, newY);
             })
             
             
@@ -103,17 +103,17 @@ function chessBoard()
                 if(clicked)
                 {
                     clicked=false
-                    console.log(e.target)
+                    // console.log(e.target)
                     div.setAttribute('data-piece',tempPiece)
                 }
                 
                 else
                 {
                     clicked=true;
-                    console.log(e.target)
+                    // console.log(e.target)
                    tempPiece= document.getElementById(e.target.id).getAttribute("data-piece")
                    e.target.setAttribute("data-piece","None")
-                   console.log(tempPiece)
+                //    console.log(tempPiece)
                 }
                 /*
                     let pieceType= cb[from.r][from.c]
@@ -129,5 +129,48 @@ function chessBoard()
     }
 }
 // document.onload = function(){
-chessBoard();
+//chessBoard();
+
+/* GAMEUPDATER / Constructor for the game.
+*/
+function GameUpdater(){
+    this.playerType = null;
+    this.getplayerType = function(){
+        return this.playerType;
+    };
+    this.setplayerType = function(p){
+        this.playerType = p;
+    };
+
+    this.updateGame = function(){
+        // here you update the game with what you pass through from incoming messages
+    }
+}
+var setup = function(){
+    var host = "ws://localhost:3000";
+    var socket = new WebSocket(host);
+    var gu = new GameUpdater();
+    chessBoard();
+    /*
+    * HERE WE GET AND SENT WS MESSAGES
+    */
+    socket.onmessage = function(event){
+        var newMessage= JSON.parse(event.data)
+        console.log(newMessage);
+
+        if(newMessage.type == Messages.T_PLAYER_TYPE){
+            gu.setplayerType(newMessage.data);
+        }
+        if(newMessage.type == Messages.T_MOVE){
+            if (gu.getplayerType() == "A"){
+                // alert("OMG y r u White?");
+                console.log(newMessage);
+            }
+            if (gu.getplayerType() == "B"){
+                // alert("Yassss you're playing Black!");
+                // gu.updateGame();
+            }
+        }
+    }
+}();
 // }
