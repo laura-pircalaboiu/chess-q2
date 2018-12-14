@@ -1,6 +1,5 @@
 
-export class chessLogic 
-{
+// export class chessLogic {
     hasAPiece = function (chessboard, position) 
     {
         return (chessboard[position.x][position.y] !== null)
@@ -80,16 +79,14 @@ export class chessLogic
         {
             for (let c = 0; c <= 7; c++) 
             {
-                if ((cb[r][c] !== null) && (cb[r][c].cptype === PieceType.King)) 
-                {
+                if ((cb[r][c] !== null) && (cb[r][c].cptype === PieceType.King)) {
                     let pk = new Position(c, r);
-                    if (check(cb, pk)) 
-                    {
-                        if (cb[r][c].cpcolor == Color.White) 
-                            console.log("The White King is in check!");
-                        if (cb[r][c].cpcolor == Color.Black)
-                            console.log("The Black King is in check!");
-                    }
+                    // if (check(cb, pk)) {
+                    //     if (cb[r][c].cpcolor == Color.White) 
+                    //         // console.log("The White King is in check!");
+                    //     if (cb[r][c].cpcolor == Color.Black)
+                    //         // console.log("The Black King is in check!");
+                    // }
                 }
             }
         }
@@ -111,4 +108,4 @@ export class chessLogic
     }
 
     //todo: function that returns what squares are in between a piece and a position
-}
+// }
