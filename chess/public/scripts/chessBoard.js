@@ -1,29 +1,29 @@
-function chessBoard() 
+function chessBoard(socket) 
 {
     let cb = Array(8).fill(0).map(x => Array(8).fill(0))
     const cbOrder = [cpType.Rook, cpType.Knight, cpType.Bishop,
     cpType.King, cpType.Queen, cpType.Bishop,
-    cpType.Knight, cpType.Rook] 
-    let clicked = false 
-    let tempPiece= 'None' 
+    cpType.Knight, cpType.Rook]
+    let tempPiece= 'None'
+    let clicked = false
+    let pos1
+    let pos2
 
-    const cbSection = document.querySelector("#board") 
-    let counter = 0 
+    const cbSection = document.querySelector("#board")
 
     for (let r = 0; r < cb.length; r++) 
     {
         for (let c = 0; c < cb.length; c++) 
         {
             let div = document.createElement('div')
-            // console.log('test') 
+            let id = `${r + 1}, ${c + 1}`
 
             if ((r + c) % 2 === 0)
                 div.classList.add('Black') 
             else
                 div.classList.add('White') 
 
-            counter++ 
-            div.setAttribute('id', (counter) + '') 
+            div.setAttribute('id', (id) + '')
             div.setAttribute('draggable', "true") 
 
             if (r === 0) 
@@ -99,15 +99,28 @@ function chessBoard()
                 if(clicked)
                 {
                     clicked=false
-                    // console.log(e.target)
-                    div.setAttribute('data-piece',tempPiece)
+                    //console.log(e.target)
+                    let xy = e.target.id.split(", ")
+                    pos2 = new Position(xy[0], xy[1])
+                    console.log(`${pos1.x}, ${pos1.y}`)
+                    console.log(`${pos2.x}, ${pos2.y}`)
+                    div.setAttribute('data-piece', tempPiece)
+                    move = new Move(pos1, pos2, tempPiece)
+                    socket.send(JSON.stringify
+                    ({
+                        type: 'move',
+                        move: move
+                    }))
+                    console.log(move)
                 }
                 
                 else
                 {
                     clicked=true 
-                    // console.log(e.target)
-                    tempPiece= document.getElementById(e.target.id).getAttribute("data-piece")
+                    console.log(e.target)
+                    let xy = e.target.id.split(", ")
+                    pos1 = new Position(xy[0], xy[1])
+                    tempPiece = document.getElementById(e.target.id).getAttribute("data-piece")
                     e.target.setAttribute("data-piece","None")
                     //console.log(tempPiece)
                 }
@@ -142,7 +155,7 @@ var setup = function()
     var host = "ws://localhost:3000"
     var socket = new WebSocket(host)
     var gu = new GameUpdater()
-    chessBoard()
+    chessBoard(socket)
     /*
     * HERE WE GET AND SENT WS MESSAGES
     */

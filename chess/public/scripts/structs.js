@@ -14,12 +14,25 @@ this.cpType = cpType;
 class chessPiece 
 {
     //assign type + colour
-    constructor(t, c, div) 
+    constructor(t, c, div)
     {
         this.type = t;
         this.colour = c;
         this.div = div;
     }
+}
+
+function Position(x, y)
+{
+    this.x = x
+    this.y = y
+}
+
+function Move(firstPos, secPos, chessPiece)
+{
+    this.firstPos = firstPos
+    this.secPos = secPos
+    this.chessPiece = chessPiece
 }
 
 const movesWhite = [];

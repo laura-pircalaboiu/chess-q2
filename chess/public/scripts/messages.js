@@ -18,13 +18,10 @@
     exports.S_PLAYER_B = JSON.stringify(exports.O_PLAYER_B)
 
     exports.T_MOVE = "PLAYER-TYPE"
-    exports.O_MOVE = 
+    /*exports.O_MOVE = 
     {                            
         type: exports.T_MOVE,
-        turn: null,
-        posFrom: null,
-        posTo: null,
-        pieceT: null
-    }
+        move: exports.move
+    }*/
 
 }(typeof exports ==="undefined" ? this.Messages={} : exports))
