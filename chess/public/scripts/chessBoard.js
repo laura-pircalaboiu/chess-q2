@@ -102,16 +102,18 @@ function chessBoard(socket)
                     //console.log(e.target)
                     let xy = e.target.id.split(", ")
                     pos2 = new Position(xy[0], xy[1])
-                    console.log(`${pos1.x}, ${pos1.y}`)
-                    console.log(`${pos2.x}, ${pos2.y}`)
+                    //console.log(`${pos1.x}, ${pos1.y}`)
+                   // console.log(`${pos2.x}, ${pos2.y}`)
                     div.setAttribute('data-piece', tempPiece)
                     move = new Move(pos1, pos2, tempPiece)
+
                     socket.send(JSON.stringify
                     ({
-                        type: 'move',
+                        type:'move',
                         move: move
                     }))
-                    console.log(move)
+
+                     console.log("move sent!")
                 }
                 
                 else
@@ -146,10 +148,15 @@ function GameUpdater()
         this.playerType = p 
     }
 
-    this.updateGame = function(){
+    this.updateGame = function(move){
         // here you update the game with what you pass through from incoming messages
+        console.log(move)
+        console.log(move.secPos.x+", "+move.secPos.y)
+        document.getElementById(move.secPos.x+", "+move.secPos.y).setAttribute("data-piece",move.chessPiece)
+        document.getElementById(move.firstPos.x+", "+move.firstPos.y).setAttribute("data-piece","None")
     }
 }
+
 var setup = function()
 {
     var host = "ws://localhost:3000"
@@ -171,13 +178,16 @@ var setup = function()
             if (gu.getplayerType() == "A")
             {
                 alert("OMG y r u White?") 
-                console.log(newMessage) 
+                gu.updateGame(newMessage.move)
             }
-            else
+            if (gu.getplayerType() == "B")
             {
                 alert("Yassss you're playing Black!")
-                gu.updateGame()
+                gu.updateGame(newMessage.move)
             }
+        }
+        if(newMessage.type=='incomingm'){
+            gu.updateGame(newMessage.move)
         }
     }
 }()

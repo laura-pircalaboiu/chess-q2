@@ -65,6 +65,16 @@ wss.on("connection", function connection(ws) {
         console.log(incomingPlayerMessage);
         let gameObj = websockets[ws.id];
         let isPlayerA = (gameObj.playerA == ws) ? true : false;
+        if(incomingPlayerMessage.type=='move'){
+            websockets[ws.id].playerA.send(JSON.stringify({
+                type: 'incomingm',
+                move: incomingPlayerMessage.move
+            }))
+            websockets[ws.id].playerB.send(JSON.stringify({
+                type: 'incomingm',
+                move: incomingPlayerMessage.move
+            }))
+        }
     });
 
     ws.on("close", function (code) {
