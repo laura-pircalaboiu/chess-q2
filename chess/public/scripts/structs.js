@@ -22,14 +22,5 @@ class chessPiece
     }
 }
 
-// this.Position = class Position
-// {
-//     constructor(x, y)
-//     {
-//         this.x = x;
-//         this.y = y;
-//     }
-// }
-
 const movesWhite = [];
 const movesBlack = [];

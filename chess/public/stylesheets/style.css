@@ -4,9 +4,12 @@ body
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a 
+a.Play
 {
-  color: #00B7FF;
+  appearance: button;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  text-decoration: none;
 }
 
 .White
@@ -66,52 +69,52 @@ a
 
 [data-piece="White Pawn"]
 {
-  background-image: url(../../images/whitePawn.png);
+  background-image: url(../images/whitePawn.png);
 }
 [data-piece="White Rook"]
 {
-  background-image: url(../../images/whiteRook.png);
+  background-image: url(../images/whiteRook.png);
 }
 [data-piece="White Knight"]
 {
-  background-image: url(../../images/whiteKnight.png);
+  background-image: url(../images/whiteKnight.png);
 }
 [data-piece="White Bishop"]
 {
-  background-image: url(../../images/whiteBishop.png);
+  background-image: url(../images/whiteBishop.png);
 }
 [data-piece="White King"]
 {
-  background-image: url(../../images/whiteKing.png);
+  background-image: url(../images/whiteKing.png);
 }
 [data-piece="White Queen"]
 {
-  background-image: url(../../images/whiteQueen.png);
+  background-image: url(../images/whiteQueen.png);
 }
 
 [data-piece="Black Pawn"]
 {
-  background-image: url(../../images/blackPawn.png);
+  background-image: url(../images/blackPawn.png);
 }
 [data-piece="Black Rook"]
 {
-  background-image: url(../../images/blackRook.png);
+  background-image: url(../images/blackRook.png);
 }
 [data-piece="Black Knight"]
 {
-  background-image: url(../../images/blackKnight.png);
+  background-image: url(../images/blackKnight.png);
 }
 [data-piece="Black Bishop"]
 {
-  background-image: url(../../images/blackBishop.png);
+  background-image: url(../images/blackBishop.png);
 }
 [data-piece="Black King"]
 {
-  background-image: url(../../images/blackKing.png);
+  background-image: url(../images/blackKing.png);
 }
 [data-piece="Black Queen"]
 {
-  background-image: url(../../images/blackQueen.png);
+  background-image: url(../images/blackQueen.png);
 }
 
 
