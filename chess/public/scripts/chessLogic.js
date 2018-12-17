@@ -5,72 +5,54 @@
         return (chessboard[position.x][position.y] !== null)
     }
 
-    canMove = function (chessboard, from, to) 
+    canMove = function (move) 
     {
-        if ((chessboard[from.x][from.y]) === null) 
+        if (move.chessPiece === "None") 
         {
             alert("There is no piece in the position that you are trying to move from");
             return false;
         }
-        if ((chessboard[to.x][to.y]) !== null) 
-        {
-            alert("There is already a piece where you are trying to move");
-            return false;
-        }
-        if (validMove(chessboard, from, to)) 
+
+        if (validMove(move)) 
             return true;
         
-        else 
-        {
-            alert("That is not a valid move!")
-            return false;
-        }
+        alert("That is not a valid move!")
+        return false;
     }
 
-    validMove = function (chessboard, from, to) 
+    validMove = function (move) 
     {
-        var result = false;
-        var horidiff = Math.abs(from.x - to.x)
-        var vertdiff = Math.abs(from.y - to.y)
-        switch (chessboard[from.x][from.y].cpType) 
-        {
-            case Pawn:
-                if ((vertdiff === 1) || (horidiff === 0))
-                    result = true;
-                break;
+        var xdiff = Math.abs(move.from.x - move.to.x)
+        var ydiff = Math.abs(move.from.y - move.to.y)
+        console.log(move.from, move.to)
+        console.log(`xdiff = ${xdiff}, ydiff = ${ydiff}`)
 
-            case Rook:
-                if (vertdiff * horidiff === 0)
-                    result = true;
-                break;
+        if(move.chessPiece.includes("Pawn"))
+            if ((ydiff === 1 || ydiff === 2) && (xdiff === 0))
+                return true
+        
+        if(move.chessPiece.includes("Rook"))
+            if (ydiff * xdiff === 0)
+                return true
 
-            case Knight:
-                if (vertdiff * horidiff === 2)
-                    result = true;
-                break;
+        if(move.chessPiece.includes("Knight"))
+            if (ydiff * xdiff === 2)
+                return true
 
-            case Bishop:
-                if (vertdiff === horidiff)
-                    result = true
-                break
+        if(move.chessPiece.includes("Bishop"))
+            if (ydiff === xdiff)
+                return true
+        
+        if(move.chessPiece.includes("Queen"))
+            if ((xdiff === ydiff) || (xdiff === 0) || (ydiff === 0))
+                return true
+        
+        if(move.chessPiece.includes("King"))
+            if (((xdiff === 0) && (ydiff === 1)) || ((xdiff === 1) && (ydiff === 1))
+            || ((xdiff === 1) && (ydiff === 0)))
+                return true
 
-            case Bishop:
-                if (vertdiff === horidiff)
-                    result = true;
-                break
-
-            case Queen:
-                if ((horiDiff === vertDiff) || (horiDiff === 0) || (vertDiff === 0))
-                    result = true
-                break
-            
-            case King:
-                if (((oriDiff === 0) && (vertDiff === 1)) || ((horiDiff === 1) && (vertDiff === 1))
-                    || ((horiDiff === 1) && (vertDiff === 0)))
-                    result = true
-                break
-        }
-        return result
+        return false
     }
 
     kingInCheck = function (cb) 
