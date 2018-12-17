@@ -2,6 +2,38 @@ body
 {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/chess.jpg");
+  background-size: cover;
+}
+
+#movehistory::after{
+  content:':';
+}
+
+
+.tinyscreen p{
+  position: relative;
+  text-align: center;
+  width:100%;
+  height:100%;
+  top:50%;
+}
+
+.tinyscreen{
+  display: none;
+  position: fixed;
+  background-color:rgb(238, 200, 244) ;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 800px), screen and (max-height:500px){
+  .tinyscreen{
+      display: block;
+  }
 }
 
 a.Play
