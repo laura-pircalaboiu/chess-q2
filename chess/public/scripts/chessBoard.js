@@ -99,8 +99,10 @@ function chessBoard(socket)
                 if(clicked)
                 {
                     clicked=false
+                    //let id = `${r + 1}, ${c + 1}`
                     let xy = e.target.id.split(", ")
                     to = new Position(xy[0], xy[1])
+                    console.log(to)
                     move = new Move(from, to, tempPiece)
                     console.log(move.from, move.to)
 
@@ -126,6 +128,7 @@ function chessBoard(socket)
                     let xy = e.target.id.split(", ")
                     console.log(xy[0], xy[1])
                     from = new Position(xy[0], xy[1])
+                    console.log(from)
                     tempPiece = document.getElementById(e.target.id).getAttribute("data-piece")
                     e.target.setAttribute("data-piece", "None")
                 }

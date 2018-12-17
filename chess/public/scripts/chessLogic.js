@@ -28,19 +28,21 @@
         console.log(`xdiff = ${xdiff}, ydiff = ${ydiff}`)
 
         if(move.chessPiece.includes("Pawn"))
-            if ((ydiff === 1 || ydiff === 2) && (xdiff === 0))
-                return true
+            if ((xdiff === 1 || xdiff === 2) && (ydiff === 0))
+                if((document.getElementById(`${move.to.x}, ${move.to.y}`)
+                .getAttribute("data-piece")) === "None")
+                    return true
         
         if(move.chessPiece.includes("Rook"))
-            if (ydiff * xdiff === 0)
+            if (xdiff * ydiff === 0)
                 return true
 
         if(move.chessPiece.includes("Knight"))
-            if (ydiff * xdiff === 2)
+            if (xdiff * ydiff === 2)
                 return true
 
         if(move.chessPiece.includes("Bishop"))
-            if (ydiff === xdiff)
+            if (xdiff === ydiff)
                 return true
         
         if(move.chessPiece.includes("Queen"))

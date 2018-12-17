@@ -28,10 +28,10 @@ function Position(x, y)
     this.y = y
 }
 
-function Move(firstPos, secPos, chessPiece)
+function Move(from, to, chessPiece)
 {
-    this.firstPos = firstPos
-    this.secPos = secPos
+    this.from = from
+    this.to = to
     this.chessPiece = chessPiece
 }
 
