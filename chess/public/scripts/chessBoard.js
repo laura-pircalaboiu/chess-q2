@@ -133,6 +133,20 @@ function chessBoard(socket)
         }
     }
 }
+
+const updateAddRemoveCookie = (name, value, expirationSeconds = 86400) => {
+    if (value !== "") {
+        const date = new Date();
+        date.setTime(date.getTime() + expirationSeconds);
+        const expires = "; expires=" + date.toGMTString();
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+};
+
+
+//add a bullshit cookie
+updateAddRemoveCookie("hi","yeet")
+
 // document.onload = function(){
 //chessBoard() 
 
@@ -159,7 +173,7 @@ function GameUpdater()
 
 var setup = function()
 {
-    var host = "ws://localhost:3000"
+    var host = "ws://572f4d61.ngrok.io"
     var socket = new WebSocket(host)
     var gu = new GameUpdater()
     chessBoard(socket)
