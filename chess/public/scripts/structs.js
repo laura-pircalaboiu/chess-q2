@@ -14,10 +14,10 @@ this.cpType = cpType;
 class chessPiece 
 {
     //assign type + colour
-    constructor(t, c, div)
+    constructor(type, colour, div)
     {
-        this.type = t;
-        this.colour = c;
+        this.type = type;
+        this.colour = colour;
         this.div = div;
     }
 }
@@ -28,10 +28,10 @@ function Position(x, y)
     this.y = y
 }
 
-function Move(firstPos, secPos, chessPiece)
+function Move(from, to, chessPiece)
 {
-    this.firstPos = firstPos
-    this.secPos = secPos
+    this.from = from
+    this.to = to
     this.chessPiece = chessPiece
 }
 

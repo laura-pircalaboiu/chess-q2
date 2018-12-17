@@ -6,8 +6,8 @@ function chessBoard(socket)
     cpType.Knight, cpType.Rook]
     let tempPiece= 'None'
     let clicked = false
-    let pos1
-    let pos2
+    let from
+    let to
 
     const cbSection = document.querySelector("#board")
 
@@ -16,7 +16,7 @@ function chessBoard(socket)
         for (let c = 0; c < cb.length; c++) 
         {
             let div = document.createElement('div')
-            let id = `${r + 1}, ${c + 1}`
+            let id = `${c + 1}, ${r + 1}`
 
             if ((r + c) % 2 === 0)
                 div.classList.add('Black') 
@@ -99,32 +99,35 @@ function chessBoard(socket)
                 if(clicked)
                 {
                     clicked=false
-                    //console.log(e.target)
                     let xy = e.target.id.split(", ")
-                    pos2 = new Position(xy[0], xy[1])
-                    //console.log(`${pos1.x}, ${pos1.y}`)
-                   // console.log(`${pos2.x}, ${pos2.y}`)
-                    div.setAttribute('data-piece', tempPiece)
-                    move = new Move(pos1, pos2, tempPiece)
+                    to = new Position(xy[0], xy[1])
+                    move = new Move(from, to, tempPiece)
+                    console.log(move.from, move.to)
 
-                    socket.send(JSON.stringify
-                    ({
-                        type:'move',
-                        move: move
-                    }))
+                    if(canMove(move))
+                    {
+                        div.setAttribute('data-piece', tempPiece)
 
-                     console.log("move sent!")
+                        socket.send(JSON.stringify
+                        ({
+                            type:'move',
+                            move: move
+                        }))
+                    }
+
+                    else
+                        document.getElementById(`${from.x}, ${from.y}`).setAttribute("data-piece", tempPiece)
                 }
                 
                 else
                 {
                     clicked=true 
-                    console.log(e.target)
+                    console.log(e.target.id)
                     let xy = e.target.id.split(", ")
-                    pos1 = new Position(xy[0], xy[1])
+                    console.log(xy[0], xy[1])
+                    from = new Position(xy[0], xy[1])
                     tempPiece = document.getElementById(e.target.id).getAttribute("data-piece")
-                    e.target.setAttribute("data-piece","None")
-                    //console.log(tempPiece)
+                    e.target.setAttribute("data-piece", "None")
                 }
             })
 
@@ -141,19 +144,24 @@ function chessBoard(socket)
 function GameUpdater()
 {
     this.playerType = null 
-    this.getplayerType = function(){
+    this.getplayerType = function()
+    {
         return this.playerType 
     }
-    this.setplayerType = function(p){
+    this.setplayerType = function(p)
+    {
         this.playerType = p 
     }
 
-    this.updateGame = function(move){
-        // here you update the game with what you pass through from incoming messages
+    //Here you update the game with what you pass through from incoming messages
+    this.updateGame = function(move)
+    {
         console.log(move)
-        console.log(move.secPos.x+", "+move.secPos.y)
-        document.getElementById(move.secPos.x+", "+move.secPos.y).setAttribute("data-piece",move.chessPiece)
-        document.getElementById(move.firstPos.x+", "+move.firstPos.y).setAttribute("data-piece","None")
+        console.log(move.secPos.x + ", " + move.secPos.y)
+        document.getElementById(move.secPos.x + ", " + move.secPos.y)
+            .setAttribute("data-piece", move.chessPiece)
+        document.getElementById(move.firstPos.x + ", " + move.firstPos.y)
+            .setAttribute("data-piece", "None")
     }
 }
 
@@ -163,9 +171,8 @@ var setup = function()
     var socket = new WebSocket(host)
     var gu = new GameUpdater()
     chessBoard(socket)
-    /*
-    * HERE WE GET AND SENT WS MESSAGES
-    */
+
+    //HERE WE SEND AND RECIEVE WS MESSAGES
     socket.onmessage = function(event)
     {
         var newMessage= JSON.parse(event.data)
@@ -174,21 +181,21 @@ var setup = function()
         if(newMessage.type == Messages.T_PLAYER_TYPE)
             gu.setplayerType(newMessage.data)
         
-        if(newMessage.type == Messages.T_MOVE){
-            if (gu.getplayerType() == "A")
+        if(newMessage.type == Messages.T_MOVE)
+        {
+            if (gu.getplayerType() === "A")
             {
                 alert("OMG y r u White?") 
                 gu.updateGame(newMessage.move)
             }
-            if (gu.getplayerType() == "B")
+            if (gu.getplayerType() === "B")
             {
                 alert("Yassss you're playing Black!")
                 gu.updateGame(newMessage.move)
             }
         }
-        if(newMessage.type=='incomingm'){
+
+        if(newMessage.type === 'incomingm')
             gu.updateGame(newMessage.move)
-        }
     }
 }()
-// }
