@@ -2,25 +2,33 @@ var express = require("express");
 var http = require("http");
 var websocket = require("ws");
 var messages = require("./public/scripts/messages");
+var ejs = require('ejs')
+var path = require('path')
+
 
 var Game = require("./game");
 var port = process.argv[2];
 var app = express();
 
+app.set('views',path.join(__dirname,'public'))
+app.set('view engine',' ejs')
+
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+
+var server = http.createServer(app);
+const wss = new websocket.Server({ server });
+var websockets = {};//property: websocket, value: game
 
 app.get("/game", (req, res) => {
     res.sendFile("/game.html", {root: "public"});
 });
 
 app.get("*", (req, res) => {
-    res.sendFile("/splash.html", {root: "public"});
+    res.render("splash.ejs", {title:'Chess!', players:Object.keys(websockets).length, games:Math.floor(Object.keys(websockets).length/2)});
 });
 
-var server = http.createServer(app);
-const wss = new websocket.Server({ server });
-var websockets = {};//property: websocket, value: game
+
 
 /*
  * regularly clean up the websockets object
