@@ -99,32 +99,35 @@ function chessBoard(socket)
                 if(clicked)
                 {
                     clicked=false
-                    //console.log(e.target)
                     let xy = e.target.id.split(", ")
-                    pos2 = new Position(xy[0], xy[1])
-                    //console.log(`${pos1.x}, ${pos1.y}`)
-                   // console.log(`${pos2.x}, ${pos2.y}`)
-                    div.setAttribute('data-piece', tempPiece)
-                    move = new Move(pos1, pos2, tempPiece)
+                    to = new Position(xy[0], xy[1])
+                    move = new Move(from, to, tempPiece)
+                    console.log(move.from, move.to)
 
-                    socket.send(JSON.stringify
-                    ({
-                        type:'move',
-                        move: move
-                    }))
+                    if(canMove(move))
+                    {
+                        div.setAttribute('data-piece', tempPiece)
 
-                     console.log("move sent!")
+                        socket.send(JSON.stringify
+                        ({
+                            type:'move',
+                            move: move
+                        }))
+                    }
+
+                    else
+                        document.getElementById(`${from.x}, ${from.y}`).setAttribute("data-piece", tempPiece)
                 }
                 
                 else
                 {
                     clicked=true 
-                    console.log(e.target)
+                    console.log(e.target.id)
                     let xy = e.target.id.split(", ")
-                    pos1 = new Position(xy[0], xy[1])
+                    console.log(xy[0], xy[1])
+                    from = new Position(xy[0], xy[1])
                     tempPiece = document.getElementById(e.target.id).getAttribute("data-piece")
-                    e.target.setAttribute("data-piece","None")
-                    //console.log(tempPiece)
+                    e.target.setAttribute("data-piece", "None")
                 }
             })
 
